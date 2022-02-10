@@ -1,0 +1,3 @@
+C:/Users/azatd/Documents/CLionProjects/C_homework/hw_02_04/cmake-build-debug/CMakeFiles/hw_02_04.dir
+C:/Users/azatd/Documents/CLionProjects/C_homework/hw_02_04/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/azatd/Documents/CLionProjects/C_homework/hw_02_04/cmake-build-debug/CMakeFiles/rebuild_cache.dir
