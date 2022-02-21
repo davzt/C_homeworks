@@ -8,17 +8,22 @@ void task5();
 void task6();
 void task7();
 void task8();
+void task9();
+void task10();
+void task11();
 
 int main() {
-//    task1();
-//    task2();
-//    task3();
-//    task4();
-//    task5();
-//    task6();
-//    task7();
+    task1();
+    task2();
+    task3();
+    task4();
+    task5();
+    task6();
+    task7();
     task8();
-
+    task9();
+    task10();
+    task11();
     return 0;
 }
 
@@ -124,3 +129,83 @@ void task7() {
     printf("Number of values: %d\n", j);
 }
 
+void task8() {
+    int a;
+    int i = 0;
+    int n = 0;
+    puts("Enter the numbers" );
+    puts("Enter the EOF character to end input." );
+    while(scanf("%d", &a) && a != EOF) {
+        if ((a % 2) == 0)
+            i += 1;
+        else {
+            if (i > n)
+                n=i;
+            i = 0;
+        }
+    }
+    printf("Number of values: %d\n", n);
+}
+
+void task9() {
+    int a;
+    int i = 0;
+    int j = 0;
+    puts("Enter the numbers" );
+    puts("Enter the EOF character to end input." );
+    while(scanf("%d", &a) && a != EOF) {
+        if ((a % 2) == 0) {
+            if (j != 0)
+                printf("Number of odd integers: %d\n", j);
+            i += 1;
+            j = 0;
+        } else {
+            if (i != 0)
+                printf("Number of even integers: %d\n", i);
+            j += 1;
+            i = 0;
+        }
+    }
+}
+
+void task10() {
+    int a, prev;
+    int i = 0, j = 1, n = 0;
+    puts("Enter the numbers" );
+    puts("Enter the EOF character to end input." );
+    while(scanf("%d", &a) && a != EOF) {
+        i++;
+        if (a > prev && i != 1) {
+            j++;
+        } else {
+            if (j > 1) {
+                printf("Length of the ascending sequence: %d\n", j);
+                n++;
+            }
+            j = 1;
+        }
+        prev = a;
+    }
+    printf("Number of ascending sequences: %d\n", n);
+}
+
+void task11() {
+    int a, prev;
+    int i = 0, j = 1, n = 0, k = 0;
+    puts("Enter the numbers" );
+    puts("Enter the EOF character to end input." );
+    while(scanf("%d", &a) && a != EOF) {
+        i++;
+        if (a == prev && i != 1) {
+            j++;
+        } else {
+            if (j > n && i != 1) {
+                n = j;
+                k = i - j;
+            }
+            j = 1;
+        }
+        prev = a;
+    }
+    printf("index: %d; length: %d\n", k, n);
+}
