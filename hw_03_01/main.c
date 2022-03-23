@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <math.h>
 
 typedef struct node {
     int value;
     struct node *next;
 } node;
 
+int checkErrorInt(char str[10]);
+int strToInt(char str[10]);
 void push(int value);
 void insert(int value);
 int pop();
@@ -17,53 +21,67 @@ node *head = NULL;
 node *tail = NULL;
 
 int main() {
-    int i;
+    int i = 0;
     while (i != 7) {
         puts("\nEnter the number of command\n\n  1. Insert\n  2. Push\n  3. Pop\n  4. Print the list\n  "
              "5. Delete the list\n  6. Check if element exists in list\n  7. Exit");
         int k;
-        scanf("%d", &i);
-        switch (i) {
-            case 1:
-                puts("Enter the value to insert");
-                scanf("%d", &k);
-                insert(k);
-                break;
+        if (scanf("%d", &i) != 1) {
+            puts("You entered an invalid value");
+            return 0;
+        } else {
+            switch (i) {
+                case 1:
+                    puts("Enter the value to insert");
+                    if (scanf("%d", &k) != 1) {
+                        puts("You entered an invalid value");
+                        return 0;
+                    }
+                    insert(k);
+                    break;
 
-            case 2:
-                puts("Enter the value to push");
-                scanf("%d", &k);
-                push(k);
-                break;
+                case 2:
+                    puts("Enter the value to push");
+                    if (scanf("%d", &k) != 1) {
+                        puts("You entered an invalid value");
+                        return 0;
+                    }
+                    push(k);
+                    break;
 
-            case 3:
-                printf("Poped value: %d\n", pop());
-                break;
+                case 3:
+                    printf("Poped value: %d\n", pop());
+                    break;
 
-            case 4:
-                puts("The list:");
-                print();
-                break;
+                case 4:
+                    puts("The list:");
+                    print();
+                    break;
 
-            case 5:
-                delete();
-                puts("List deleted");
-                break;
+                case 5:
+                    delete();
+                    puts("List deleted");
+                    break;
 
-            case 6:
-                puts("Enter the value to check");
-                scanf("%d", &k);
-                if (contains(k) == 1)
-                    puts("The element exists in the list");
-                else
-                    puts("The element doesn't exist in the list");
-                break;
+                case 6:
+                    puts("Enter the value to check");
+                    if (scanf("%d", &k) != 1) {
+                        puts("You entered an invalid value");
+                        return 0;
 
-            case 7:
-                break;
+                    }
+                    if (contains(k) == 1)
+                        puts("The element exists in the list");
+                    else
+                        puts("The element doesn't exist in the list");
+                    break;
 
-            default:
-                puts("You entered an invalid value");
+                case 7:
+                    break;
+
+                default:
+                    puts("You entered an invalid value");
+            }
         }
     }
     return 0;
@@ -168,4 +186,37 @@ int contains(int value) {
     if (curr->value == value)
         return 1;
     return 0;
+}
+
+int checkErrorInt(char str[10])
+{
+    int i = 0;
+    int error = 0;
+
+    while(str[i]!= '\0')
+    {
+        if(str[i] > '9' || str[i] < '0')
+        {
+            error = 1;
+            break;
+        }
+        i++;
+    }
+
+    return error;
+
+}
+
+int strToInt(char str[10])
+{
+    int len = strlen(str);
+    int i;
+    int result = 0;
+
+    for(i = 0; i < len; i++)
+    {
+        result+=(str[i]-'0')*pow(10,len-i-1);
+    }
+
+    return result;
 }
