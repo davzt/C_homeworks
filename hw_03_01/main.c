@@ -8,8 +8,7 @@ typedef struct node {
     struct node *next;
 } node;
 
-int checkErrorInt(char str[10]);
-int strToInt(char str[10]);
+
 void push(int value);
 void insert(int value);
 int pop();
@@ -186,37 +185,4 @@ int contains(int value) {
     if (curr->value == value)
         return 1;
     return 0;
-}
-
-int checkErrorInt(char str[10])
-{
-    int i = 0;
-    int error = 0;
-
-    while(str[i]!= '\0')
-    {
-        if(str[i] > '9' || str[i] < '0')
-        {
-            error = 1;
-            break;
-        }
-        i++;
-    }
-
-    return error;
-
-}
-
-int strToInt(char str[10])
-{
-    int len = strlen(str);
-    int i;
-    int result = 0;
-
-    for(i = 0; i < len; i++)
-    {
-        result+=(str[i]-'0')*pow(10,len-i-1);
-    }
-
-    return result;
 }
